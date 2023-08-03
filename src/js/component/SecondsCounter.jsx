@@ -1,41 +1,32 @@
 import React from "react";
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
 const SecondsCounter = (props) => {
-  let seconds = 0;
-  let interval = null;
-
-  function timer (){
-    seconds++
-
-    //Formateando el tiempo
-
-    let hrs = Math.floor(seconds / 3600);
-    let mins = Math.floor((seconds - (hrs * 3600)) / 60);
-    let secs = seconds % 60;
-   
-   if(secs < 10) secs = '0' + secs;
-   if(mins < 10) mins = '0' + mins;
-   if(hrs < 10) hrs = '0' + hrs;
-
-    let str = hrs + ':' + mins + ':' + secs;
-
-    return str;
-  }
-
-  function start() {
-    interval = setInterval(timer, 1000);
-  }
   
-
-   
-
     return (
-        <div className="container_" width={props.width} height={props.height}>
-            <h1 onLoad={start()}>{timer()}</h1>
+        <div className="container_" >
+            <div className="cube">
+                <img src={props.url} alt="" width="70px" height="70px" />
+            </div>
+            <div className="cube">{props.num6}</div>
+            <div className="cube">{props.num5}</div>
+            <div className="cube">{props.num4}</div>
+            <div className="cube">{props.num3}</div>
+            <div className="cube">{props.num2}</div>
+            <div className="cube">{props.num1}</div>
         </div>
     )
 }
 
-
+SecondsCounter.propTypes = {
+  num1: PropTypes.number,
+  num2: PropTypes.number,
+  num3: PropTypes.number,
+  num4: PropTypes.number,
+  num5: PropTypes.number,
+  num6: PropTypes.number,
+  url: PropTypes.string
+  
+}
 
 export default SecondsCounter;
